@@ -1,23 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
-  let change_button = document.getElementById("change_button");
-  let reset_button = document.getElementById("reset_button");
-  let grid_items = document.querySelectorAll(".grid-item");
+function cells() {
+  const arr = [];
+  for (let i = 1; i <= 9; i++) arr.push(document.getElementById(String(i)));
+  return arr;
+}
 
-  change_button.addEventListener("click", () => {
-    let block_id = document.getElementById("block_id").value;
-    let colour_id = document.getElementById("colour_id").value;
+function resetAll() {
+  cells().forEach((el) => (el.style.backgroundColor = "transparent"));
+}
 
-    // reset all first
-    grid_items.forEach(b => b.style.background = "transparent");
-
-    // get the correct grid box
-    let target = document.getElementById(block_id);
-    if (target) {
-      target.style.background = colour_id;
-    }
-  });
-
-  reset_button.addEventListener("click", () => {
-    grid_items.forEach(b => b.style.background = "transparent");
-  });
+document.getElementById("change_button").addEventListener("click", () => {
+  const id = document.getElementById("block_id").value.trim();
+  const color = document.getElementById("colour_id").value.trim();
+  resetAll();
+  const cell = document.getElementById(id);
+  if (cell && color) cell.style.backgroundColor = color;
 });
+
+document.getElementById("reset_button").addEventListener("click", resetAll);
