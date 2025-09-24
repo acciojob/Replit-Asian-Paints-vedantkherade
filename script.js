@@ -1,23 +1,21 @@
-//your JS code here. If required.
-let block = document.getElementById("block_id");
-let colour = document.getElementById("colour_id");
 let change_button = document.getElementById("change_button");
-let Reset = document.getElementById("Reset");
-let grid_item =  document.querySelectorAll(".grid-item")
+let reset_button = document.getElementById("reset_button");
+let grid_items = document.querySelectorAll(".grid-item");
 
 change_button.addEventListener("click", () => {
-	let block_id = document.getElementById("block_id").value;
-	let color_id = document.getElementById("colour_id").value;
+  let block_id = document.getElementById("block_id").value;
+  let colour_id = document.getElementById("colour_id").value;
 
-	 grid_item.forEach(b => b.style.background = "transparent");
+  // reset all first
+  grid_items.forEach(b => b.style.background = "transparent");
 
-  // find the grid box by id and color it
+  // get the correct grid box
   let target = document.getElementById(block_id);
   if (target) {
-    target.style.background = color_id;
+    target.style.background = colour_id;
   }
-})
+});
 
-Reset.addEventListener("click", () => {
-  grid_item.forEach(b => b.style.background = "transparent");
+reset_button.addEventListener("click", () => {
+  grid_items.forEach(b => b.style.background = "transparent");
 });
